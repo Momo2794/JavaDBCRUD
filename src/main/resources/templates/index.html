@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Homepage</title>
+
+        <style>
+            .div-top { text-align: center; }
+             table { margin-left: auto; margin-right: auto; }
+        </style>
+    </head>
+
+    <body>
+        <div class="div-top">
+            <nav class="nav-mapping">
+                <a th:href="@{/index}">Homepage</a>
+                <a th:href="@{/about}">About</a>
+                <a th:href="@{/contact}">Contact</a>
+                <a th:href="@{/create}">Create Student</a>
+            </nav>
+        </div>
+
+        <br>
+
+        <div class="div-mid">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>DOB</th>
+                        <th>Street</th>
+                        <th>Postcode</th>
+                        <th>Country</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="student : ${studentsList}">
+                        <td th:text="${student.sid}"></td>
+                        <td th:text="${student.sfirstname}"></td>
+                        <td th:text="${student.slastname}"></td>
+                        <td th:text="${student.sdob}"></td>
+                        <td th:text="${student.sstreet}"></td>
+                        <td th:text="${student.spostcode}"></td>
+                        <td th:text="${student.scountry}"></td>
+                        <td>
+                            <a th:href="@{'/edit/' + ${student.sid}}">Edit</a>
+                            <a th:href="@{'/delete/' + ${student.sid}}">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
