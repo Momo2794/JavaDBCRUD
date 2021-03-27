@@ -1,5 +1,7 @@
 package com.webapp.dbcrud.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -18,6 +20,7 @@ public class Student {
     @Column(name = "s_lastname")
     private String slastname;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "s_dob")
     private Date sdob;
 
